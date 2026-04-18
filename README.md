@@ -1,6 +1,6 @@
 # Weather Cape
 
-A full-stack weather sounding analysis tool. A FastAPI backend fetches and analyzes atmospheric soundings (e.g. from the University of Wyoming) using MetPy, and a React + Three.js frontend visualizes the results.
+A full-stack weather sounding analysis tool. A FastAPI backend fetches and analyzes atmospheric soundings (e.g. from the University of Wyoming) using MetPy, and a React + Three.js frontend visualizes the results and allows you to use local Ollama vision models to analyze current image with CSV data to give you weather analysis that you can chat with.
 
 <img height="1280" alt="image" src="https://github.com/user-attachments/assets/99223c4d-691e-45b5-82a6-07867def7372" />
 
