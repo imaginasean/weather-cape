@@ -2,7 +2,7 @@
 
 A full-stack weather sounding analysis tool. A FastAPI backend fetches and analyzes atmospheric soundings (e.g. from the University of Wyoming) using MetPy, and a React + Three.js frontend visualizes the results.
 
-<img width="3442" height="1860" alt="image" src="https://github.com/user-attachments/assets/99223c4d-691e-45b5-82a6-07867def7372" />
+<img height="1280" alt="image" src="https://github.com/user-attachments/assets/99223c4d-691e-45b5-82a6-07867def7372" />
 
 
 ## Project Structure
