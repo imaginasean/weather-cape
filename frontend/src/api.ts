@@ -2,6 +2,19 @@ import type { SoundingAnalysis } from './types'
 
 const BASE = import.meta.env.VITE_API_BASE ?? ''
 
+export async function fetchStationAvailability(date: string, hourZ: string): Promise<Set<string>> {
+  try {
+    const res = await fetch(
+      `${BASE}/api/stations/available?date=${encodeURIComponent(date)}&hour=${encodeURIComponent(hourZ)}`,
+    )
+    if (!res.ok) return new Set()
+    const j = (await res.json()) as { stations?: string[] }
+    return new Set(j.stations ?? [])
+  } catch {
+    return new Set()
+  }
+}
+
 export type ChatMessage = {
   role: 'system' | 'user' | 'assistant'
   content: string

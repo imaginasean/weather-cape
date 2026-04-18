@@ -1,4 +1,6 @@
 import { Line, Text } from '@react-three/drei'
+
+import { SCENE_FONT_URL } from '../sceneFont'
 import { useFrame } from '@react-three/fiber'
 import { useMemo } from 'react'
 import { useState } from 'react'
@@ -261,6 +263,7 @@ export function AtmosphericColumn({
                 <>
                   <Text
                     position={[columnRadius * 1.75, 0, 0]}
+                    font={SCENE_FONT_URL}
                     fontSize={labelStyle.fontSize}
                     color="#ffffff"
                     anchorX="right"
@@ -375,6 +378,7 @@ function LayerFog({
           {label && (
             <Text
               position={[columnRadius * 1.12, y1, 0]}
+              font={SCENE_FONT_URL}
               fontSize={0.34}
               color={color}
               anchorX="left"

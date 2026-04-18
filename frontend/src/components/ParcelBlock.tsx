@@ -1,6 +1,8 @@
 import { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Line, Text } from '@react-three/drei'
+
+import { SCENE_FONT_URL } from '../sceneFont'
 import * as THREE from 'three'
 
 interface Props {
@@ -105,6 +107,7 @@ export function ParcelBlock({ y, deltaTC, columnRadius, pulse, elevationM }: Pro
           />
           <Text
             position={[columnRadius * 1.25, 0, 0]}
+            font={SCENE_FONT_URL}
             fontSize={0.4}
             color="#ffffff"
             anchorX="left"

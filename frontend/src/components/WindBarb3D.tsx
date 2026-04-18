@@ -15,9 +15,9 @@ function discretizeBarbs(kn: number): { n50: number; n10: number; n5: number } {
   if (kn < 2.5) return { n50: 0, n10: 0, n5: 0 }
   let s = Math.round(kn / 5) * 5
   if (s < 5) s = 5
-  let n50 = Math.floor(s / 50)
+  const n50 = Math.floor(s / 50)
   s -= n50 * 50
-  let n10 = Math.floor(s / 10)
+  const n10 = Math.floor(s / 10)
   s -= n10 * 10
   const n5 = s >= 5 ? 1 : 0
   return { n50, n10, n5 }

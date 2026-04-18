@@ -1,0 +1,106 @@
+/** Curated upper-air / radiosonde sites (WMO id for Wyoming `id=` BUFR CSV). */
+export type UpperAirStation = {
+  wmo: string
+  icao?: string
+  name: string
+  country: string
+  lat: number
+  lon: number
+}
+
+/** Match Wyoming `stationid` strings (zero-padded WMO when numeric). */
+export function normalizeStationId(id: string): string {
+  const t = id.trim()
+  if (/^\d+$/.test(t)) return t.padStart(5, '0')
+  return t
+}
+
+/** Unique WMO sites (US-focused + selected global). */
+export const UPPER_AIR_STATIONS: UpperAirStation[] = [
+  { wmo: '72426', icao: 'KILN', name: 'Wilmington, OH', country: 'US', lat: 39.42, lon: -83.82 },
+  { wmo: '72251', icao: 'KBRO', name: 'Brownsville, TX', country: 'US', lat: 25.92, lon: -97.42 },
+  { wmo: '72572', icao: 'KSLC', name: 'Salt Lake City, UT', country: 'US', lat: 40.78, lon: -111.97 },
+  { wmo: '72214', icao: 'KTLH', name: 'Tallahassee, FL', country: 'US', lat: 30.38, lon: -84.37 },
+  { wmo: '72248', icao: 'KOUN', name: 'Norman, OK', country: 'US', lat: 35.18, lon: -97.44 },
+  { wmo: '72469', icao: 'KDVN', name: 'Davenport, IA', country: 'US', lat: 41.61, lon: -90.58 },
+  { wmo: '72422', icao: 'KOKX', name: 'Upton, NY', country: 'US', lat: 40.87, lon: -72.87 },
+  { wmo: '72403', icao: 'KALB', name: 'Albany, NY', country: 'US', lat: 42.75, lon: -73.8 },
+  { wmo: '72501', icao: 'KABR', name: 'Aberdeen, SD', country: 'US', lat: 45.46, lon: -98.41 },
+  { wmo: '72520', icao: 'KMPX', name: 'Chanhassen, MN', country: 'US', lat: 44.85, lon: -93.57 },
+  { wmo: '72528', icao: 'KOAX', name: 'Omaha, NE', country: 'US', lat: 41.32, lon: -96.37 },
+  { wmo: '72558', icao: 'KILX', name: 'Lincoln, IL', country: 'US', lat: 40.15, lon: -89.34 },
+  { wmo: '72562', icao: 'KTOP', name: 'Topeka, KS', country: 'US', lat: 39.07, lon: -95.62 },
+  { wmo: '72613', icao: 'KBOI', name: 'Boise, ID', country: 'US', lat: 43.64, lon: -116.22 },
+  { wmo: '72645', icao: 'KTFX', name: 'Great Falls, MT', country: 'US', lat: 47.46, lon: -111.38 },
+  { wmo: '72681', icao: 'KOTX', name: 'Spokane, WA', country: 'US', lat: 47.68, lon: -117.63 },
+  { wmo: '72712', icao: 'KALW', name: 'Walla Walla, WA', country: 'US', lat: 46.09, lon: -118.29 },
+  { wmo: '72747', icao: 'KGPI', name: 'Kalispell, MT', country: 'US', lat: 48.31, lon: -114.26 },
+  { wmo: '72764', icao: 'KREV', name: 'Reno, NV', country: 'US', lat: 39.58, lon: -119.87 },
+  { wmo: '72768', icao: 'KSHR', name: 'Sheridan, WY', country: 'US', lat: 44.77, lon: -106.97 },
+  { wmo: '72776', icao: 'KRIW', name: 'Riverton, WY', country: 'US', lat: 43.06, lon: -108.48 },
+  { wmo: '72793', icao: 'KBOU', name: 'Boulder, CO', country: 'US', lat: 40.0, lon: -105.18 },
+  { wmo: '72451', icao: 'KGRB', name: 'Green Bay, WI', country: 'US', lat: 44.48, lon: -88.13 },
+  { wmo: '72440', icao: 'KDTX', name: 'Detroit, MI', country: 'US', lat: 42.7, lon: -83.47 },
+  { wmo: '72423', icao: 'KPBZ', name: 'Pittsburgh, PA', country: 'US', lat: 40.53, lon: -80.23 },
+  { wmo: '72408', icao: 'KBUF', name: 'Buffalo, NY', country: 'US', lat: 42.94, lon: -78.74 },
+  { wmo: '72405', icao: 'KCAR', name: 'Caribou, ME', country: 'US', lat: 46.87, lon: -68.02 },
+  { wmo: '72327', icao: 'KRNK', name: 'Blacksburg, VA', country: 'US', lat: 37.21, lon: -80.41 },
+  { wmo: '72317', icao: 'KGSO', name: 'Greensboro, NC', country: 'US', lat: 36.08, lon: -79.79 },
+  { wmo: '72305', icao: 'KCHS', name: 'Charleston, SC', country: 'US', lat: 32.78, lon: -79.94 },
+  { wmo: '72293', icao: 'KFFC', name: 'Peachtree City, GA', country: 'US', lat: 33.36, lon: -84.57 },
+  { wmo: '72235', icao: 'KLIX', name: 'Slidell, LA', country: 'US', lat: 30.34, lon: -89.82 },
+  { wmo: '72233', icao: 'KLCH', name: 'Lake Charles, LA', country: 'US', lat: 30.12, lon: -93.22 },
+  { wmo: '72221', icao: 'KJAX', name: 'Jacksonville, FL', country: 'US', lat: 30.48, lon: -81.7 },
+  { wmo: '72210', icao: 'KMFL', name: 'Miami, FL', country: 'US', lat: 25.75, lon: -80.38 },
+  { wmo: '72206', icao: 'KKEY', name: 'Key West, FL', country: 'US', lat: 24.56, lon: -81.69 },
+  { wmo: '72230', icao: 'KSHV', name: 'Shreveport, LA', country: 'US', lat: 32.45, lon: -93.84 },
+  { wmo: '72240', icao: 'KAMA', name: 'Amarillo, TX', country: 'US', lat: 35.23, lon: -101.83 },
+  { wmo: '72249', icao: 'KFWD', name: 'Fort Worth, TX', country: 'US', lat: 32.84, lon: -97.3 },
+  { wmo: '72261', icao: 'KABQ', name: 'Albuquerque, NM', country: 'US', lat: 35.04, lon: -106.62 },
+  { wmo: '72274', icao: 'KFGZ', name: 'Flagstaff, AZ', country: 'US', lat: 35.14, lon: -111.67 },
+  { wmo: '72295', icao: 'KMOB', name: 'Mobile, AL', country: 'US', lat: 30.68, lon: -88.24 },
+  { wmo: '72364', icao: 'KDDC', name: 'Dodge City, KS', country: 'US', lat: 37.76, lon: -99.97 },
+  { wmo: '72365', icao: 'KGID', name: 'Grand Island, NE', country: 'US', lat: 40.97, lon: -98.31 },
+  { wmo: '72376', icao: 'KLBF', name: 'North Platte, NE', country: 'US', lat: 41.12, lon: -100.67 },
+  { wmo: '72387', icao: 'KUNR', name: 'Rapid City, SD', country: 'US', lat: 44.08, lon: -103.1 },
+  { wmo: '72456', icao: 'KMSP', name: 'Minneapolis, MN', country: 'US', lat: 44.88, lon: -93.23 },
+  { wmo: '72489', icao: 'KDEN', name: 'Denver, CO', country: 'US', lat: 39.86, lon: -104.67 },
+  { wmo: '72518', icao: 'KBIS', name: 'Bismarck, ND', country: 'US', lat: 46.77, lon: -100.76 },
+  { wmo: '72522', icao: 'KFSD', name: 'Sioux Falls, SD', country: 'US', lat: 43.58, lon: -96.62 },
+  { wmo: '72542', icao: 'KDMX', name: 'Des Moines, IA', country: 'US', lat: 41.43, lon: -93.65 },
+  { wmo: '72568', icao: 'KSGF', name: 'Springfield, MO', country: 'US', lat: 37.24, lon: -93.39 },
+  { wmo: '72635', icao: 'KMFR', name: 'Medford, OR', country: 'US', lat: 42.37, lon: -122.87 },
+  { wmo: '72694', icao: 'KSEW', name: 'Seattle, WA', country: 'US', lat: 47.69, lon: -122.3 },
+  { wmo: '72797', icao: 'KBLI', name: 'Bellingham, WA', country: 'US', lat: 48.79, lon: -122.54 },
+  { wmo: '72250', icao: 'KCRP', name: 'Corpus Christi, TX', country: 'US', lat: 27.77, lon: -97.51 },
+  { wmo: '72265', icao: 'KDRT', name: 'Del Rio, TX', country: 'US', lat: 29.37, lon: -100.92 },
+  { wmo: '72270', icao: 'KEPZ', name: 'El Paso, TX', country: 'US', lat: 31.87, lon: -106.7 },
+  { wmo: '72340', icao: 'KLZK', name: 'Little Rock, AR', country: 'US', lat: 34.84, lon: -92.26 },
+  { wmo: '72357', icao: 'KILX', name: 'Springfield, IL', country: 'US', lat: 39.84, lon: -89.68 },
+  { wmo: '72439', icao: 'KMPX', name: 'Twin Cities (MPX)', country: 'US', lat: 44.85, lon: -93.57 },
+  { wmo: '72278', icao: 'KPSR', name: 'Phoenix area, AZ', country: 'US', lat: 33.43, lon: -112.01 },
+  { wmo: '72606', icao: 'KLKN', name: 'Elko, NV', country: 'US', lat: 40.87, lon: -115.73 },
+  { wmo: '72662', icao: 'KPIH', name: 'Pocatello, ID', country: 'US', lat: 42.87, lon: -112.65 },
+  { wmo: '74794', icao: 'KSEW', name: 'Seattle Sounding', country: 'US', lat: 47.69, lon: -122.3 },
+  { wmo: '71823', icao: 'PABR', name: 'Utqiagvik (Barrow), AK', country: 'US', lat: 71.33, lon: -156.78 },
+  { wmo: '70273', icao: 'PANC', name: 'Anchorage, AK', country: 'US', lat: 61.17, lon: -149.98 },
+  { wmo: '72494', icao: 'KOTX', name: 'Quillayute, WA', country: 'US', lat: 47.95, lon: -124.56 },
+  { wmo: '03005', name: 'Lerwick, UK', country: 'GB', lat: 60.14, lon: -1.19 },
+  { wmo: '03808', name: 'Camborne, UK', country: 'GB', lat: 50.22, lon: -5.33 },
+  { wmo: '04018', name: 'Keflavik, Iceland', country: 'IS', lat: 63.97, lon: -22.61 },
+  { wmo: '10035', name: 'Schleswig, Germany', country: 'DE', lat: 54.53, lon: 9.55 },
+  { wmo: '10393', name: 'Lindenberg, Germany', country: 'DE', lat: 52.21, lon: 14.12 },
+  { wmo: '11035', name: 'Vienna, Austria', country: 'AT', lat: 48.25, lon: 16.36 },
+  { wmo: '11520', name: 'Prague, Czechia', country: 'CZ', lat: 50.01, lon: 14.45 },
+  { wmo: '07145', name: 'Trappes, France', country: 'FR', lat: 48.72, lon: 2.2 },
+  { wmo: '08221', name: 'Madrid, Spain', country: 'ES', lat: 40.45, lon: -3.55 },
+  { wmo: '16144', name: 'Brindisi, Italy', country: 'IT', lat: 40.66, lon: 17.95 },
+  { wmo: '17200', name: 'Athens, Greece', country: 'GR', lat: 37.98, lon: 23.73 },
+  { wmo: '26406', name: 'Sodankyla, Finland', country: 'FI', lat: 67.37, lon: 26.63 },
+  { wmo: '28698', name: 'Novosibirsk, Russia', country: 'RU', lat: 55.02, lon: 82.93 },
+  { wmo: '30860', name: 'Jakarta, Indonesia', country: 'ID', lat: -6.18, lon: 106.83 },
+  { wmo: '43346', name: 'Natal, Brazil', country: 'BR', lat: -5.87, lon: -35.21 },
+  { wmo: '47662', name: 'Tsukuba, Japan', country: 'JP', lat: 36.06, lon: 140.13 },
+  { wmo: '50527', name: 'Darwin, Australia', country: 'AU', lat: -12.42, lon: 130.89 },
+  { wmo: '59280', name: 'Hong Kong', country: 'HK', lat: 22.32, lon: 114.17 },
+]

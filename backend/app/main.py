@@ -6,13 +6,14 @@ from typing import Any, Literal
 from urllib.parse import parse_qsl, urlparse
 
 import numpy as np
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field, HttpUrl
 
 from app.analysis import analyze_sounding, rough_layers_from_rh
 from app.ollama_chat import SEVERE_WX_SYSTEM_PROMPT, stream_chat
+from app.stations import available_stations
 from app.sounding_fetch import (
     extract_pre_body,
     fetch_sounding_text,
@@ -99,6 +100,13 @@ def _parse_csv_meta(csv_text: str, source_url: str) -> dict[str, Any]:
 @app.get("/api/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+@app.get("/api/stations/available")
+async def stations_available(date: str = Query(...), hour: str = Query(...)) -> dict[str, Any]:
+    """Station IDs with BUFR data for this UTC cycle (Wyoming sounding_json)."""
+    ids, cached = await available_stations(date, hour)
+    return {"date": date, "hour": hour, "stations": ids, "cached": cached}
 
 
 @app.post("/api/chat/sounding")
